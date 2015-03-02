@@ -1,0 +1,18 @@
+
+<!-- <p>This is the login view.</p>
+
+<div>
+    <input type="text" ng-model="username"/>
+    <button ng-click="logMeIn(username)">Log In</button>
+</div> -->
+
+<div ng-show="!reg">
+	<h2>Login</h2>
+	{{username.email}}
+    <form>
+        <p ng-show="error" class="text-danger">{{ error }}</p>
+        <input type="email" placeholder="Email" class="form-control" ng-model="username.email"><br>
+        <input type="password" placeholder="Password" class="form-control" ng-model="username.password" required><br>
+        <input ng-click="registerUser(username)" type="submit" class="btn btn-info" value="Register"><input ng-click="loginUser(username)" type="submit" class="btn btn-info" value="Log In">
+    </form>
+</div>
