@@ -1,0 +1,38 @@
+
+<div>
+  <form> 
+    <h1>Track Activity</h1> 
+
+
+    <div>
+        <h1>AngularJS - Single Timer Example</h1>
+        <h3><timer/></h3>
+        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+    </div>
+
+
+    <div class="messages-container data" ng-cloak>
+	    <table class="table table-bordered">
+        <thead>
+          <th>Activity</th>
+          <th>Track</th>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="item in activities">
+            <td class="Activity">{{item.$value}}</td>
+            <td><button type="button" class="btn btn-default" ng-click=startTracker(item)><span class="glyphicon glyphicon-asterisk"></span></button></td>
+          </tr>
+        </tbody>
+    	</table>
+    </div>
+    <div class="row">
+    	<a href="#/login">Log Out</a>
+    </div>
+
+  </form>
+</div>
+
+
+<!-- <td><a ng-href="#/track/{{item.$id}}">{{item.$value}}</a></td> -->

@@ -1,0 +1,32 @@
+
+<div>
+  <form> 
+      <h1>Events and Reminders</h1> 
+      <div class="messages-container data">
+
+      	<table class="table table-bordered">
+        	<thead>
+          		<th>Questions to be Answered</th>
+          		<th>Answering</th>
+        	</thead>
+        	<tbody>
+          		<tr ng-repeat="item in events">
+              		<td>{{item.activity}}</td>
+
+          		</tr>
+        	</tbody>
+    		</table>
+
+      </div>
+
+
+      <div class="row" ng-cloak>
+          <div ng-repeat="item in events">
+              <div class="col-md-1">
+                  
+
+              </div>
+          </div>
+      </div>
+  </form>
+</div>

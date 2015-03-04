@@ -1,23 +1,23 @@
 var app = angular.module('nickOfTime');
 
-app.controller('loginController', function($scope, $location, EnvironmentService) {
+app.controller('loginController', function($scope, $location, userService) {
 
+	////////////////////////////////////////////////////////////////
 	//$scope.env = EnvironmentService.getEnv(); 
 
-	// $scope.logMeIn = function(username) {
+	////////////////////////////////////////////////////////////////
+	$scope.loginUser = function(loginObj) {
 
-	// 	alert(username);
-	// 	EnvironmentService.saveUsername(username);
+		userService.loginUser(loginObj);
 
- //  		$location.path('/threads');
-	// };
+		//TODO: Need to handle error in login
+		//remember that there needs to be login in 
+		//the $routeChangeStart event of the app.js file
+		//may be some cross-over.
+		userService.saveUsername(loginObj.email);
 
-	$scope.loginUser = function(username) {
-
-		//console.log(username);
-		EnvironmentService.loginUser(username);
-
-  		//$location.path('/threads');
+  		$location.path('/track');
 	};
 	
+	////////////////////////////////////////////////////////////////
 });

@@ -1,0 +1,30 @@
+
+<div>
+  <form> 
+      <h1> Sign Up </h1> 
+      <p> 
+          <label for="usernameSignup">Your Name</label>
+          <input ng-model="signup.username" required="required" type="text" placeholder="John" />
+      </p>
+      <p> 
+          <label for="emailSignup"> Your Email</label>
+          <input ng-model="signup.email" required="required" type="email" placeholder="myemail@mail.com"/> 
+      </p>
+      <p> 
+          <label for="passwordSignup">Your Password </label>
+          <input ng-model="signup.password" required="required" type="password" placeholder="eg. myUn!qu3P@ssw0rD!"/>
+      </p>
+      <p> 
+          <label for="passwordSignupConfirm">Please confirm your password </label>
+          <input ng-model="signup.confirmPassword" required="required" type="password" placeholder="eg. myUn!qu3P@ssw0rD!"/>
+      </p>
+      <p> 
+          <input ng-click="createUser(signup)" type="submit" value="Sign up"/> 
+      </p>
+      <p>  
+          Already signed up ?
+          <a ng-href="#/login"> Log In </a>
+      </p>
+      
+  </form>
+</div>
