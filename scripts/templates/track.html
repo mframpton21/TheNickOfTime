@@ -3,14 +3,7 @@
   <form> 
     <h1>Track Activity</h1> 
 
-
-    <div>
-        <h1>AngularJS - Single Timer Example</h1>
-        <h3><timer/></h3>
-        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
-        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
-    </div>
-
+    <timer timer-start="startTime" autostart="false" interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
 
     <div class="messages-container data" ng-cloak>
 	    <table class="table table-bordered">
@@ -22,7 +15,7 @@
         <tbody>
           <tr ng-repeat="item in activities">
             <td class="Activity">{{item.$value}}</td>
-            <td><button type="button" class="btn btn-default" ng-click=startTracker(item)><span class="glyphicon glyphicon-asterisk"></span></button></td>
+            <td><button type="button" class="btn btn-default" ng-click=timeTracker(item)><span class="glyphicon glyphicon-asterisk"></span></button></td>
           </tr>
         </tbody>
     	</table>
