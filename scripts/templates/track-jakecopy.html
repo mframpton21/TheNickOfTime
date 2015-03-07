@@ -1,0 +1,31 @@
+
+<div>
+  <form> 
+    <h1>Track Activity</h1> 
+
+    <timer autostart="false" interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
+
+    <div class="messages-container data" ng-cloak>
+	    <table class="table table-bordered">
+        <thead>
+          <th>Activity</th>
+          <th>Track</th>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="item in activities">
+            <td class="Activity">{{item.$value}}</td>
+            <td><button ng-class="{'red': $index === 1 && timerRunning}" ng-model="style" type="button" class="btn btn-default" ng-click='setButtonSelected($index)'><span ng-class="{'glyphicon-asterisk': timerRunning}"class="glyphicon"></span></button></td>
+          </tr>
+        </tbody>
+    	</table>
+    </div>
+    <div class="row">
+    	<a href="#/login">Log Out</a>
+    </div>
+
+  </form>
+</div>
+
+
+<!-- <td><a ng-href="#/track/{{item.$id}}">{{item.$value}}</a></td> -->

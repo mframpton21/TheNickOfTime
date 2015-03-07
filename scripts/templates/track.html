@@ -15,7 +15,7 @@
         <tbody>
           <tr ng-repeat="item in activities">
             <td class="Activity">{{item.$value}}</td>
-            <td><button type="button" class="btn btn-default" ng-click=timeTracker(item)><span class="glyphicon glyphicon-asterisk"></span></button></td>
+            <td><button ng-model="style" type="button" class="btn btn-default" ng-click="timeTracker(item, $index)"><span class="{{item.style}}"></span></button></td>
           </tr>
         </tbody>
     	</table>
