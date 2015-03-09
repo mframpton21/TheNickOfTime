@@ -14,14 +14,14 @@
 
         <tbody>
           <tr ng-repeat="item in activities">
-            <td class="Activity">{{item.$value}}</td>
+            <td class="Activity">{{item.$id}}</td>
             <td><button ng-model="style" type="button" class="btn btn-default" ng-click="timeTracker(item, $index)"><span class="{{item.style}}"></span></button></td>
           </tr>
         </tbody>
     	</table>
     </div>
     <div class="row">
-    	<a href="#/login">Log Out</a>
+    	<a href="#/logout">Log Out</a>
     </div>
 
   </form>

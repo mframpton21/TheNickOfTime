@@ -10,6 +10,12 @@ app.config(function($routeProvider){
     	controller: 'loginController'
   	})
 
+    .when('/logout',{
+
+      templateUrl: 'scripts/templates/logout.html',
+      controller: 'logoutController'
+    })
+
     .when('/signup',{
 
       templateUrl: 'scripts/templates/signup.html',

@@ -14,7 +14,7 @@ app.controller('loginController', function($scope, $location, userService) {
 		//remember that there needs to be login in 
 		//the $routeChangeStart event of the app.js file
 		//may be some cross-over.
-		userService.saveUsername(loginObj.email);
+		//userService.saveUsername(loginObj.email, uid...);
 
   		$location.path('/track');
 	};

@@ -1,6 +1,6 @@
 var app = angular.module('nickOfTime');
 
-app.controller('trackController', function ($scope, trackRef) {
+app.controller('trackController', function ($scope, trackRef, trackService) {
 
 	////////////////////////////////////////////////////////////////
 	var trackStyle = "glyphicon glyphicon-pause";
@@ -18,18 +18,17 @@ app.controller('trackController', function ($scope, trackRef) {
     for (obj1 in activities) {
       var actProp = activities[obj1]; 
       for (obj2 in actProp) {
-        if (obj2 === '$value') {
+        if (obj2 === '$id') {
           console.log(obj1 + ' ' + obj2 + ' ' + actProp[obj2]);
           actProp.style = nonTrackStyle;
         }
       }
     }
-    // angular.forEach(activities, function(nonTrackStyle, style) {
-    //   activities.push(style + ': ' + nonTrackStyle);
-    // });
+
     console.log("Act: ", activities);
   });
 
+  ////////////////////////////////////////////////////////////////
   $scope.startTimer = function (itemObj){
 
     $scope.$broadcast('timer-start');
@@ -40,6 +39,7 @@ app.controller('trackController', function ($scope, trackRef) {
     //$scope.style = "red";
   };
 
+  ////////////////////////////////////////////////////////////////
   $scope.stopTimer = function (itemObj){
 
     $scope.$broadcast('timer-stop');
@@ -50,11 +50,14 @@ app.controller('trackController', function ($scope, trackRef) {
     //$scope.style = "white";
   };
 
+  ////////////////////////////////////////////////////////////////
+  // stop timer envent to capture timer data
   $scope.$on('timer-stopped', function (event, data){
     $scope.elapseTime = data;
     console.log('Timer Stopped - data = ', data);
   });
 
+  ////////////////////////////////////////////////////////////////
   $scope.timeTracker = function(itemObj, index) {
 
     console.log("timerRunning: ", $scope.timerRunning);
@@ -69,6 +72,8 @@ app.controller('trackController', function ($scope, trackRef) {
         if (itemObj === $scope.startItem) {
           $scope.stopTimer(itemObj);
           //Write itemObj to firebase via service
+          trackService.postTrackedTime(itemObj, $scope.elapseTime);
+
           console.log("Item stopped to write: ", itemObj);
         } else {
           //Stop the timer
@@ -90,13 +95,30 @@ app.controller('trackController', function ($scope, trackRef) {
 
   };
 
+  ////////////////////////////////////////////////////////////////
   //https://docs-examples.firebaseio.com/rest/saving-data/fireblog/posts.json
-  $scope.postTrack = function (username, text) {
-    $scope.comments.$add({
-      username: username.email,
-      text: text
-    });
-  };
+  // $scope.postTrackedTime = function (trackerObj, ElasedTimeObj) {
+
+  //   var user = 
+  //   var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
+  //   $scope.activities.$add({
+  //     //username: username.email,
+  //     //text: text
+
+  //   this.createUser = function (userdata) {
+
+  //     var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
+  //     //angularfire way?
+  //     //ref.$add({});
+
+  //     //manual way looks something like this
+  //     ref.set(userdata);
+
+  //   };  
+
+
+  //   });
+  //};
 
 	////////////////////////////////////////////////////////////////
 	// $scope.createThread = function (username, title) {

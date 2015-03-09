@@ -8,21 +8,41 @@ app.service('userService', function($window) {
     };
 
     ////////////////////////////////////////////////////////////////
-    this.saveUsername = function(email) {
+    //https://thenickoftime.firebaseio.com/rest/saving-data/fireblog/posts.json
+    this.createUser = function (userdata) {
 
-    	return $window.localStorage.setItem('email', email);
+      var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
+      //angularfire way?
+      //ref.$add({});
+
+      //manual way looks something like this
+      ref.set(userdata);
+
+    };   
+
+    ////////////////////////////////////////////////////////////////
+    this.saveUserInfo = function(email, uid) {
+
+    	$window.localStorage.setItem('email', email);
+      $window.localStorage.setItem('uid', uid);
+
     };
 
     ////////////////////////////////////////////////////////////////
-    this.getUsername = function() {
+    this.getUserInfo = function() {
 
-    	return $window.localStorage.getItem('email');
+      var userInfo = {
+        email: $window.localStorage.getItem('email'),
+        uid: $window.localStorage.getItem('uid')
+      };
+    	return userInfo;
     };
 
     ////////////////////////////////////////////////////////////////
-    this.createUser = function(signupObj) {
+    this.signupUser = function(signupObj) {
 
       var ref = new Firebase(this.getEnv().firebase);
+      var self = this;
 
       ref.createUser({
 
@@ -35,6 +55,7 @@ app.service('userService', function($window) {
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
+          self.createUser(userData);         
         }
       });
     };      
@@ -43,6 +64,7 @@ app.service('userService', function($window) {
     this.loginUser = function(loginObj) {
 
       var ref = new Firebase(this.getEnv().firebase);
+      var self = this;
       var stayLoggedin = (loginObj.keepLoggedin ? "default" : "sessionOnly");
 
 		  ref.authWithPassword({
@@ -56,6 +78,7 @@ app.service('userService', function($window) {
     			console.log("Login Failed!", error);
   			} else {
     			console.log("Authenticated successfully with payload:", authData);
+          self.saveUserInfo(loginObj.email, authData.uid);
   			}
 		  },
       {remember: stayLoggedin
@@ -63,4 +86,25 @@ app.service('userService', function($window) {
     };  
 
     ////////////////////////////////////////////////////////////////  
+    this.logoutUser = function() {
+
+      var ref = new Firebase(this.getEnv().firebase);
+
+      // Unauthenticate the client
+      ref.unauth();
+
+      $window.localStorage.removeItem('email');
+      $window.localStorage.removeItem('uid');
+
+      var startsWith = 'firebase';
+      var myLength = startsWith.length;
+
+      Object.keys(localStorage).forEach(function(key){ 
+        if (key.substring(0, myLength) == startsWith) {
+          localStorage.removeItem(key); 
+        } 
+      });
+    };
+
 });
+
