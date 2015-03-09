@@ -82,6 +82,7 @@ app.controller('trackController', function ($scope, trackRef, trackService) {
           //Grab the data object
           console.log("elapseTime: ", $scope.elapseTime);
           //Write $scope.startItem to firebase via service
+          trackService.postTrackedTime($scope.startItem, $scope.elapseTime);
           console.log("Item to write: ", $scope.startItem);
           //Start the timer
           $scope.startTimer(itemObj);
@@ -96,37 +97,6 @@ app.controller('trackController', function ($scope, trackRef, trackService) {
   };
 
   ////////////////////////////////////////////////////////////////
-  //https://docs-examples.firebaseio.com/rest/saving-data/fireblog/posts.json
-  // $scope.postTrackedTime = function (trackerObj, ElasedTimeObj) {
-
-  //   var user = 
-  //   var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
-  //   $scope.activities.$add({
-  //     //username: username.email,
-  //     //text: text
-
-  //   this.createUser = function (userdata) {
-
-  //     var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
-  //     //angularfire way?
-  //     //ref.$add({});
-
-  //     //manual way looks something like this
-  //     ref.set(userdata);
-
-  //   };  
-
-
-  //   });
-  //};
-
-	////////////////////////////////////////////////////////////////
-	// $scope.createThread = function (username, title) {
- //   	$scope.activities.$add({
- //   		username: username.email,
- //   		title: title
- //   	});
- //  };
 
   ////////////////////////////////////////////////////////////////
 });

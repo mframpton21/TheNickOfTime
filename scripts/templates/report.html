@@ -1,0 +1,40 @@
+<div>
+  <a href="#/history">History</a>
+  <a href="#/track">Tracking</a>
+  <form> 
+    <h1>Reports</h1> 
+
+<!--       <p> 
+          <label for="dateFrom"> From Date:</label>
+          <input ng-model="report.fromDate" required="required" type="date" placeholder="Date to start from"/>
+    
+          <label for="toDate"> To Date:</label>
+          <input ng-model="report.toDate" required="required" type="date" placeholder="Date to end with" /> 
+          <input ng-click="getActByDate(report)" type="submit" value="Submit" /> 
+      </p> -->
+
+    <div class="messages-container data" ng-cloak>
+	    <table class="table table-bordered">
+        <thead>
+          <th>Activity</th>
+          <th>Date</th>
+          <th>Time Tracked</th>
+          <th>Billable</th>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="item in activities">
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+          </tr>
+        </tbody>
+    	</table>
+    </div>
+    <div class="row">
+    	<a href="#/logout">Log Out</a>
+    </div>
+
+  </form>
+</div>

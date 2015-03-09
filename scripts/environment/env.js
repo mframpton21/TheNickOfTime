@@ -2,7 +2,8 @@ window.env = {
 
 	////////////////////////////////////////////////////////////////
 	"environment": "development",
-  "firebase": "https://thenickoftime.firebaseio.com/"
+  	"firebase": "https://thenickoftime.firebaseio.com/",
+  	"firebaseSession": "firebase:session::thenickoftime"
 
   ////////////////////////////////////////////////////////////////
 };

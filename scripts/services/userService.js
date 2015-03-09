@@ -33,7 +33,8 @@ app.service('userService', function($window) {
 
       var userInfo = {
         email: $window.localStorage.getItem('email'),
-        uid: $window.localStorage.getItem('uid')
+        uid: $window.localStorage.getItem('uid'),
+        session: $window.localStorage.getItem(this.getEnv().firebaseSession)
       };
     	return userInfo;
     };
@@ -106,5 +107,7 @@ app.service('userService', function($window) {
       });
     };
 
-});
+});    
+
+
 
