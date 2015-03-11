@@ -12,14 +12,35 @@
           <input ng-model="report.toDate" required="required" type="date" placeholder="Date to end with" /> 
           <input ng-click="getActByDate(report)" type="submit" value="Submit" /> 
       </p>
-      <p> 
-        <input type="radio" name="group1" value="billable"> Billable
-        <input type="radio" name="group1" value="nonbillable"> Non-Billable
-        <input type="radio" name="group1" value="all" checked> All
-      </p>
+      <!-- <p> 
+        <input id="radioBillable" type="radio" name="group1" value="billable" ng-model="reportType"></input>
+        <label for="radioBillable">Billable</label>
+        <input id="radioNotBillable" type="radio" name="group1" value="notbillable" ng-model="reportType"></input>
+        <label for="radioNotBillable">Not Billable</label>
+        <input id="allType" type="radio" name="group1" value="all" ng-model="reportType" checked></input>
+        <label for="allType">All</label>
+      </p> -->
+
+      <!-- <ul>
+          <div class="btn-group" ng-class="{open: open}">
+            <button class="btn">Filter by:</button>
+            <button class="btn dropdown-toggle" ng-click="open=!open"><span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+              <li ng-repeat="type in reportType"><a ng-click="setSelectedType(type.id)">{{type.name}}<span ng-class="isChecked(type.id)"></span></a></li>
+            </ul>
+          </div>
+      </ul> -->
+
+      <div>Filter By:  
+      <select ng-options="type.name for type in reportType" ng-model="type.value"></select>
+      </div>
+
+
+
+
 
     <div class="messages-container data" ng-cloak>
-	    <table class="table table-bordered">
+	    <table class="table table-hover table-striped table-bordered">
         <thead>
           <th>Activity</th>
           <th>Date Posted</th>
@@ -28,8 +49,8 @@
           <th>Billable</th>
         </thead>
 
-        <tbody>
-          <tr ng-repeat="item in report">
+        <tbody> 
+          <tr ng-repeat="item in report | filterByType:type.value">
             <td >{{item.activity}}</td>
             <td >{{item.date}}</td>
             <td >{{item.time}}</td>

@@ -1,4 +1,4 @@
-var app = angular.module('nickOfTime', ['ngRoute', 'firebase', 'timer']);
+var app = angular.module('nickOfTime', ['ngRoute', 'firebase', 'timer', 'App.filers']);
 
 app.config(function($routeProvider){
 
@@ -65,6 +65,23 @@ app.config(function($routeProvider){
   	.otherwise({
     	redirectTo: '/login'
   	});
+});
+
+app.filter('reportType', function () {
+
+  return function (type) {
+
+    console.log(type);
+    var filtered = [];
+    // var letterMatch = new RegExp(letter, 'i');
+    // for (var i = 0; i < items.length; i++) {
+    //   var item = items[i];
+    //   if (letterMatch.test(item.name.substring(0, 1))) {
+    //     filtered.push(item);
+    //   }
+    // }
+    return filtered;
+  };
 });
 
 ////////////////////////////////////////////////////////////////
