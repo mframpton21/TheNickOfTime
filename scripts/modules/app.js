@@ -67,43 +67,24 @@ app.config(function($routeProvider){
   	});
 });
 
-app.filter('reportType', function () {
-
-  return function (type) {
-
-    console.log(type);
-    var filtered = [];
-    // var letterMatch = new RegExp(letter, 'i');
-    // for (var i = 0; i < items.length; i++) {
-    //   var item = items[i];
-    //   if (letterMatch.test(item.name.substring(0, 1))) {
-    //     filtered.push(item);
-    //   }
-    // }
-    return filtered;
-  };
-});
-
 ////////////////////////////////////////////////////////////////
-// TODO: Need to implement the $routeChangeStart event 
-// and verify that the user is still logged in... 
-// if not route to login 
 app.run(function($rootScope, $location, userService) {
 
 
 	$rootScope.$on('$routeChangeStart', function(event, next, current){
 
-    var ref = new Firebase(userService.getEnv().firebase);
-    var authData = ref.getAuth();
+    if (next.$$route.originalPath != '/signup') {
+      var ref = new Firebase(userService.getEnv().firebase);
+      var authData = ref.getAuth();
 
-    if (authData) {
-      console.log("Authenticated user with uid:", authData.uid);
-    } else {
-      console.log("User is no longer authenticated with firebase");
-      userService.logoutUser();
-      $location.path('/login');
+      if (authData) {
+        console.log("Authenticated user with uid:", authData.uid);
+      } else {
+        console.log("User is no longer authenticated with firebase");
+        userService.logoutUser();
+        $location.path('/login');
+      }
     }
-
   })
 });
 

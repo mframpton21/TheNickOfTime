@@ -8,7 +8,6 @@ app.controller('reportController', function ($scope, reportRef, reportService) {
 	////////////////////////////////////////////////////////////////
 	$scope.report.$loaded().then(function (report) {
 
-  	console.log("Report: ", report);
   });
 
 	////////////////////////////////////////////////////////////////
@@ -30,6 +29,5 @@ app.controller('reportController', function ($scope, reportRef, reportService) {
   ////////////////////////////////////////////////////////////////
   $scope.type = {};
   $scope.type.value = $scope.reportType[0];
-
 
 });	

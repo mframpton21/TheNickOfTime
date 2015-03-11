@@ -8,14 +8,9 @@ app.service('userService', function($window) {
     };
 
     ////////////////////////////////////////////////////////////////
-    //https://thenickoftime.firebaseio.com/rest/saving-data/fireblog/posts.json
     this.createUser = function (userdata) {
 
       var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
-      //angularfire way?
-      //ref.$add({});
-
-      //manual way looks something like this
       ref.set(userdata);
 
     };   

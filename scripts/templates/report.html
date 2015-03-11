@@ -4,40 +4,21 @@
   <form> 
     <h1>Reports</h1> 
 
-      <p> 
+      <div class="row">
           <label for="dateFrom"> From Date:</label>
-          <input ng-model="report.fromDate" required="required" type="date" placeholder="Date to start from"/>
-    
-          <label for="toDate"> To Date:</label>
-          <input ng-model="report.toDate" required="required" type="date" placeholder="Date to end with" /> 
-          <input ng-click="getActByDate(report)" type="submit" value="Submit" /> 
-      </p>
-      <!-- <p> 
-        <input id="radioBillable" type="radio" name="group1" value="billable" ng-model="reportType"></input>
-        <label for="radioBillable">Billable</label>
-        <input id="radioNotBillable" type="radio" name="group1" value="notbillable" ng-model="reportType"></input>
-        <label for="radioNotBillable">Not Billable</label>
-        <input id="allType" type="radio" name="group1" value="all" ng-model="reportType" checked></input>
-        <label for="allType">All</label>
-      </p> -->
-
-      <!-- <ul>
-          <div class="btn-group" ng-class="{open: open}">
-            <button class="btn">Filter by:</button>
-            <button class="btn dropdown-toggle" ng-click="open=!open"><span class="caret"></span></button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-              <li ng-repeat="type in reportType"><a ng-click="setSelectedType(type.id)">{{type.name}}<span ng-class="isChecked(type.id)"></span></a></li>
-            </ul>
-          </div>
-      </ul> -->
-
-      <div>Filter By:  
-      <select ng-options="type.name for type in reportType" ng-model="type.value"></select>
+          <input ng-model="option.fromDate" required="required" type="date" placeholder="Date to start from"/>
       </div>
 
+      <div class="row">
+    
+          <label for="toDate"> To Date:</label>
+          <input ng-model="option.toDate" required="required" type="date" placeholder="Date to end with" /> 
+      </div>
 
-
-
+      <div class="row">
+        <label for="filterBy">Filter By: </label>
+        <select ng-options="type.name for type in reportType" ng-model="type.value"></select>
+      </div>
 
     <div class="messages-container data" ng-cloak>
 	    <table class="table table-hover table-striped table-bordered">
@@ -50,11 +31,11 @@
         </thead>
 
         <tbody> 
-          <tr ng-repeat="item in report | filterByType:type.value">
+          <tr ng-repeat="item in report | filterByOptions:type.value:option">
             <td >{{item.activity}}</td>
             <td >{{item.date}}</td>
             <td >{{item.time}}</td>
-            <td >{{item.hours}}:{{item.minutes}}:{{item.seconds}}</td>
+            <td >{{item.hours}} hrs, {{item.minutes}} mins, {{item.seconds}} secs</td>
             <td >{{item.billable}}</td>
           </tr>
         </tbody>
