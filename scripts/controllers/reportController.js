@@ -31,5 +31,12 @@ app.controller('reportController', function ($scope, reportRef, reportService) {
   $scope.type = {};
   $scope.type.value = $scope.reportType[0];
 
+  $scope.getActByDate = function(report){
+      $scope.dateObj = {
+          fromDate: report.fromDate,
+          toDate: report.toDate
+      };
+
+  }
 
 });	
