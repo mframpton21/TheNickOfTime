@@ -4,6 +4,24 @@ app.config(function($routeProvider){
 
   ////////////////////////////////////////////////////////////////
 	$routeProvider
+    .when('/home',{
+
+      templateUrl: 'scripts/templates/home.html'
+      
+    })
+
+    .when('/about',{
+
+      templateUrl: 'scripts/templates/about.html'
+      
+    })
+
+    .when('/contact',{
+
+      templateUrl: 'scripts/templates/contact.html'
+      
+    })
+
   	.when('/login',{
 
     	templateUrl: 'scripts/templates/login.html',
@@ -63,7 +81,7 @@ app.config(function($routeProvider){
     })
 
   	.otherwise({
-    	redirectTo: '/login'
+    	redirectTo: '/home'
   	});
 });
 
@@ -72,6 +90,7 @@ app.run(function($rootScope, $location, userService) {
 
 
 	$rootScope.$on('$routeChangeStart', function(event, next, current){
+
 
     if (next.$$route.originalPath != '/signup') {
       var ref = new Firebase(userService.getEnv().firebase);

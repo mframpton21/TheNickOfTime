@@ -1,30 +1,47 @@
+<div class="navbar-wrapper">
+  <div class="container">
 
-<div>
-  <form> 
-      <h1> Sign Up </h1> 
-      <p> 
-          <label for="usernameSignup">Your Name</label>
-          <input ng-model="signup.username" required="required" type="text" placeholder="John" />
-      </p>
-      <p> 
-          <label for="emailSignup"> Your Email</label>
-          <input ng-model="signup.email" required="required" type="email" placeholder="myemail@mail.com"/> 
-      </p>
-      <p> 
-          <label for="passwordSignup">Your Password </label>
-          <input ng-model="signup.password" required="required" type="password" placeholder="eg. myUn!qu3P@ssw0rD!"/>
-      </p>
-      <p> 
-          <label for="passwordSignupConfirm">Please confirm your password </label>
-          <input ng-model="signup.confirmPassword" required="required" type="password" placeholder="eg. myUn!qu3P@ssw0rD!"/>
-      </p>
-      <p> 
-          <input ng-click="signupUser(signup)" type="submit" value="Sign up"/> 
-      </p>
-      <p>  
-          Already signed up ?
-          <a ng-href="#/login"> Log In </a>
-      </p>
-      
-  </form>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/home">In the Nick of Time</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/home">Home</a></li>
+            <li><a href="#/about">About</a></li>
+            <li><a href="#/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
 </div>
+
+<div class="container">
+
+  <form class="form-signin">
+    <h2 class="form-signin-heading">Sign up</h2>
+    <label for="usernameSignup" class="sr-only">Your name</label>
+    <input ng-model="signup.username" type="text" id="usernameSignup" class="form-control" placeholder="your name" required autofocus>
+    <label for="emailSignup" class="sr-only">Email address</label>
+    <input ng-model="signup.email" type="email" id="emailSignup" class="form-control" placeholder="email address" required>
+    <label for="passwordSignup" class="sr-only">Password</label>
+    <input ng-model="signup.password" type="password" id="passwordSignup" class="form-control" placeholder="password" required>
+
+    <label for="passwordSignupConfirm" class="sr-only">Password confirm</label>
+    <input ng-model="signup.confirmPassword" type="password" id="passwordSignupConfirm" class="form-control" placeholder="confirm your password" required>    
+
+    
+    <button ng-click="signupUser(signup)" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <div>Already signed up ?<a ng-href="#/login"> Log In </a></div>
+  </form>
+
+</div> <!-- /container -->
+
