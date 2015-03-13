@@ -1,6 +1,6 @@
 var app = angular.module('App.filers', []);
 
-app.filter('filterByOptions', [function () {
+app.filter('filterByOptions', function(helperService) {
 
   return function (report, selectedType, option) {
 
@@ -8,8 +8,8 @@ app.filter('filterByOptions', [function () {
     var toDate;
 
     if (option && option.fromDate && option.toDate) {
-      fromDate = formatDate(option.fromDate);
-      toDate = formatDate(option.toDate);
+      fromDate = helperService.formatDate(option.fromDate);
+      toDate = helperService.formatDate(option.toDate);
     }
 
     if (report) {
@@ -31,11 +31,5 @@ app.filter('filterByOptions', [function () {
     return report;
   };
 
-}]);
+});
 
-var formatDate = function(obj) {
-  var yyyy = obj.getFullYear().toString();
-  var mm = (obj.getMonth()+1).toString(); // getMonth() is zero-based
-  var dd = obj.getDate().toString();
-  return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]); 
-};

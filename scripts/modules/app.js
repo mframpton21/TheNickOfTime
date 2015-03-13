@@ -89,21 +89,21 @@ app.config(function($routeProvider){
 app.run(function($rootScope, $location, userService) {
 
 
-	$rootScope.$on('$routeChangeStart', function(event, next, current){
+	// $rootScope.$on('$routeChangeStart', function(event, next, current){
 
 
-    if (next.$$route.originalPath != '/signup') {
-      var ref = new Firebase(userService.getEnv().firebase);
-      var authData = ref.getAuth();
+ //    if (next.$$route.originalPath != '/signup') {
+ //      var ref = new Firebase(userService.getEnv().firebase);
+ //      var authData = ref.getAuth();
 
-      if (authData) {
-        console.log("Authenticated user with uid:", authData.uid);
-      } else {
-        console.log("User is no longer authenticated with firebase");
-        userService.logoutUser();
-        $location.path('/login');
-      }
-    }
-  })
+ //      if (authData) {
+ //        console.log("Authenticated user with uid:", authData.uid);
+ //      } else {
+ //        console.log("User is no longer authenticated with firebase");
+ //        userService.logoutUser();
+ //        $location.path('/login');
+ //      }
+ //    }
+ //  })
 });
 

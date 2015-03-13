@@ -29,5 +29,8 @@ app.controller('reportController', function ($scope, reportRef, reportService) {
   ////////////////////////////////////////////////////////////////
   $scope.type = {};
   $scope.type.value = $scope.reportType[0];
+  $scope.option = {};
+  $scope.option.fromDate = new Date();
+  $scope.option.toDate = new Date();
 
 });	

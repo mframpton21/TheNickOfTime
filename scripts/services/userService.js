@@ -8,17 +8,19 @@ app.service('userService', function($window) {
     };
 
     ////////////////////////////////////////////////////////////////
-    this.createUser = function (userdata) {
+    this.createUser = function (userdata, signupObj) {
 
       var ref = new Firebase(this.getEnv().firebase + '/users/' + userdata.uid);
-      ref.set(userdata);
+      ref.set(userdata);    
+      ref.child('username').set(signupObj.username)
 
     };   
 
     ////////////////////////////////////////////////////////////////
     this.saveUserInfo = function(email, uid) {
 
-    	$window.localStorage.setItem('email', email);
+    	//$window.localStorage.setItem('username', email);
+      $window.localStorage.setItem('email', email);
       $window.localStorage.setItem('uid', uid);
 
     };
@@ -32,6 +34,23 @@ app.service('userService', function($window) {
         session: $window.localStorage.getItem(this.getEnv().firebaseSession)
       };
     	return userInfo;
+    };
+
+    ////////////////////////////////////////////////////////////////
+    this.getUserName = function(uid) {
+
+      // var ref = new Firebase(this.getEnv().firebase + '/users/' + uid + '/username');
+
+      // ref.on("value", function(data) {
+      //   console.log(data.val());
+      // }, function (errorObject) {
+      //   console.log("The read failed: " + errorObject.code);
+      // });
+      
+      // // console.log("getUserName: ", uid);
+      // // var ref = new Firebase(this.getEnv().firebase + '/users/' + uid + '/username');
+      // // var username = ref.child('username');
+      // return username;
     };
 
     ////////////////////////////////////////////////////////////////
@@ -51,7 +70,8 @@ app.service('userService', function($window) {
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          self.createUser(userData);         
+          console.log(signupObj);
+          self.createUser(userData, signupObj);         
         }
       });
     };      
@@ -74,6 +94,8 @@ app.service('userService', function($window) {
     			console.log("Login Failed!", error);
   			} else {
     			console.log("Authenticated successfully with payload:", authData);
+          // var userObject = self.getUserName(authData.uid);
+          // console.log(userObject);
           self.saveUserInfo(loginObj.email, authData.uid);
   			}
 		  },
@@ -91,6 +113,7 @@ app.service('userService', function($window) {
 
       $window.localStorage.removeItem('email');
       $window.localStorage.removeItem('uid');
+      $window.localStorage.removeItem('username');
 
       var startsWith = 'firebase';
       var myLength = startsWith.length;
