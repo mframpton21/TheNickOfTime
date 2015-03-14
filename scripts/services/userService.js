@@ -26,6 +26,21 @@ app.service('userService', function($window) {
     };
 
     ////////////////////////////////////////////////////////////////
+    this.getUserAuth = function() {
+      var ref = new Firebase(this.getEnv().firebase);
+      var authData = ref.getAuth();
+
+      if (authData) {
+        console.log("Authenticated user with uid:", authData.uid);
+        return true;
+      } else {
+        console.log("User is no longer authenticated with firebase");
+        this.logoutUser();
+        return false;
+      }
+    };
+
+    ////////////////////////////////////////////////////////////////
     this.getUserInfo = function() {
 
       var userInfo = {

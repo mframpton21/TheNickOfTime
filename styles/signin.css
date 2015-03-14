@@ -38,3 +38,9 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  width: auto;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

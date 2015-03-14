@@ -89,21 +89,22 @@ app.config(function($routeProvider){
 app.run(function($rootScope, $location, userService) {
 
 
-	// $rootScope.$on('$routeChangeStart', function(event, next, current){
+	$rootScope.$on('$routeChangeStart', function(event, next, current){
 
+    switch (next.$$route.originalPath) {
+      case '/home':
+        if (current.$$route.originalPath !== '/home') {$location.path('/home')};
+        break; 
+      case '/signup':
+        if (current.$$route.originalPath !== '/signup') {$location.path('/signup')};
+        break; 
+      default: 
+        var loggedIn = userService.getUserAuth();
+        if (!loggedIn) {
+          if (current.$$route.originalPath !== '/login') {$location.path('/login')};
+        }
+    }
 
- //    if (next.$$route.originalPath != '/signup') {
- //      var ref = new Firebase(userService.getEnv().firebase);
- //      var authData = ref.getAuth();
-
- //      if (authData) {
- //        console.log("Authenticated user with uid:", authData.uid);
- //      } else {
- //        console.log("User is no longer authenticated with firebase");
- //        userService.logoutUser();
- //        $location.path('/login');
- //      }
- //    }
- //  })
+  })
 });
 

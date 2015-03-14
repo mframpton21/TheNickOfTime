@@ -1,0 +1,21 @@
+<div class="messages-container data" ng-cloak>
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <th>Activity</th>
+      <th>Date Posted</th>
+      <th>Time Posted</th>
+      <th>Time Tracked</th>
+      <th>Billable</th>
+    </thead>
+
+    <tbody> 
+      <tr ng-repeat="item in report | filterByOptions:type.value:option">
+        <td >{{item.activity}}</td>
+        <td >{{item.date}}</td>
+        <td >{{item.time}}</td>
+        <td >{{item.hours}} hrs, {{item.minutes}} mins, {{item.seconds}} secs</td>
+        <td >{{item.billable}}</td>
+      </tr>
+    </tbody>
+	</table>
+</div>

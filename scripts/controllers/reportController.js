@@ -1,7 +1,7 @@
 var app = angular.module('nickOfTime');
 
 app.controller('reportController', function ($scope, reportRef, reportService) {
-
+  $scope.detailed = !$scope.detailed
 	////////////////////////////////////////////////////////////////
 	$scope.report = reportRef.$asArray();
 
@@ -29,8 +29,10 @@ app.controller('reportController', function ($scope, reportRef, reportService) {
   ////////////////////////////////////////////////////////////////
   $scope.type = {};
   $scope.type.value = $scope.reportType[0];
+
+  var dateObj = new Date();
   $scope.option = {};
-  $scope.option.fromDate = new Date();
+  $scope.option.fromDate = new Date(dateObj.setDate(dateObj.getDate() - 7));
   $scope.option.toDate = new Date();
 
 });	

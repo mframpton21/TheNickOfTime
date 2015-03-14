@@ -9,7 +9,7 @@ app.controller('logoutController', function($scope, $location, userService) {
 
 		userService.logoutUser();
 
-  		$location.path('/login');
+  		$location.path('/home');
 	};
 	
 	////////////////////////////////////////////////////////////////
