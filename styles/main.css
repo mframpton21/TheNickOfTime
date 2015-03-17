@@ -1,4 +1,13 @@
-.Activity {
+.TrackActivity {
 	width: 95%;
 }
+
+.DetailReportActivity {
+	width: 50%;	
+}
+
+.SummaryReportActivity {
+	width: 75%;	
+}
+
 

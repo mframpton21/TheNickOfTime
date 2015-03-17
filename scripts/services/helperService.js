@@ -21,5 +21,19 @@ app.service('helperService', function() {
   };
 
 	////////////////////////////////////////////////////////////////
+  this.calculateTime = function(millis) {
+
+    var hours = Math.floor(millis / 36e5),
+        mins = Math.floor((millis % 36e5) / 6e4),
+        secs = Math.floor((millis % 6e4) / 1000);
+
+    var timeObj = {
+      hours: hours,
+      minutes: mins,
+      seconds: secs
+    };    
+    return timeObj;
+  };
 
 });
+
