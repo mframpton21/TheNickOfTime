@@ -7,7 +7,7 @@
     </thead>
 
     <tbody> 
-      <tr ng-repeat="item in summaryReport | filterByOptions:type.value:option">
+      <tr ng-repeat="item in reportObj | filterByOptions:type.value:option:detailed">
         <td >{{item.activity}}</td>
         <td >{{item.hours}} hrs, {{item.minutes}} mins, {{item.seconds}} secs</td>
         <td >{{item.billable}}</td>

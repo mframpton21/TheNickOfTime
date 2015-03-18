@@ -8,6 +8,7 @@ app.directive('navbar', function(){
   }
 });
 
+////////////////////////////////////////////////////////////////
 app.directive('detailed', function(){
   return {
       restrict: 'E',
@@ -16,6 +17,7 @@ app.directive('detailed', function(){
   }
 });
 
+////////////////////////////////////////////////////////////////
 app.directive('summary', function(){
   return {
       restrict: 'E',
@@ -23,3 +25,6 @@ app.directive('summary', function(){
       controller: 'ReportSummaryController'
   }
 });
+
+////////////////////////////////////////////////////////////////
+

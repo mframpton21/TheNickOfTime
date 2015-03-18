@@ -3,12 +3,22 @@
 <h1>Reports</h1> 
 
 <form class="form-signin"> 
-  <div class="form-group">
+
+  <div  class="form-group btn-group" data-toggle="buttons">
+      <label ng-click="detailed = true" class="btn btn-primary active">
+        <input type="radio" name="options" > Detailed
+      </label>
+      <label ng-click="detailed = false" class="btn btn-primary">
+        <input type="radio" name="options"> Summary
+      </label>
+  </div>
+
+  <div class="form-group" ng-if="detailed">
       <label for="fromdate">From Date: </label>
       <input ng-model="option.fromDate" required="required" class="form-control" type="date" placeholder="from date"/>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" ng-if="detailed">
       <label for="todate">To Date: </label>
       <input ng-model="option.toDate" required="required" type="date" class="form-control" placeholder="to date" /> 
   </div>
@@ -16,15 +26,6 @@
   <div class="form-group">
     <label for="filterBy">Filter By: </label>
     <select class="form-control" ng-options="type.name for type in reportType" ng-model="type.value"></select>
-  </div>
-
-  <div  class="btn-group" data-toggle="buttons">
-      <label ng-click="detailed = true" class="btn btn-primary active">
-        <input type="radio" name="options" > Detailed
-      </label>
-      <label ng-click="detailed = false" class="btn btn-primary">
-        <input type="radio" name="options"> Summary
-      </label>
   </div>
 
 </form>

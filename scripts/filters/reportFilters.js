@@ -2,12 +2,12 @@ var app = angular.module('App.filers', []);
 
 app.filter('filterByOptions', function(helperService) {
 
-  return function (report, selectedType, option) {
+  return function (report, selectedType, option, detailed) {
 
     var fromDate; 
     var toDate;
 
-    if (option && option.fromDate && option.toDate) {
+    if (detailed && option && option.fromDate && option.toDate) {
       fromDate = helperService.formatDate(option.fromDate);
       toDate = helperService.formatDate(option.toDate);
     }
