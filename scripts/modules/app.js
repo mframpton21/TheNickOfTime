@@ -40,6 +40,12 @@ app.config(function($routeProvider){
       controller: 'signupController'
     })
 
+    .when('/stats',{
+
+      templateUrl: 'scripts/templates/stats.html',
+      controller: 'statsController'
+    })
+
   	.when('/track', {
   		templateUrl: 'scripts/templates/track.html',
   		controller: 'trackController',
