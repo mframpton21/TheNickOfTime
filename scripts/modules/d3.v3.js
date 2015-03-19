@@ -12,7 +12,6 @@
   function d3_window(node) {
     return node && (node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView);
   }
-  if (d3_document) {
     try {
       d3_array(d3_document.documentElement.childNodes)[0].nodeType;
     } catch (e) {

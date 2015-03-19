@@ -135,7 +135,11 @@ app.controller('statsController', function($scope, $location, userService) {
 	{label:"Delux", color:"#990099"}
 	];
 
-	var svg = d3.select("body").append("svg").attr("width",700).attr("height",300);
+	var svg = d3.select('#' + thingPassedIn).append("svg").attr("width",700).attr("height",300);
+
+
+
+
 
 	svg.append("g").attr("id","salesDonut");
 	svg.append("g").attr("id","quotesDonut");

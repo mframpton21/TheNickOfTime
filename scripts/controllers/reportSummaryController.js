@@ -7,6 +7,18 @@ app.controller('ReportSummaryController', function ($scope, reportService, helpe
 
 	$scope.report.forEach(function (report) {
 
+		console.log("before", report);
+		// for (key in $scope.reportObj) {
+		// 	console.log("reportObj key", key);
+
+		// 	if ($scope.reportObj[key] === 'activity' && 
+		// 		key[$scope.reportObj] === report.activity) {
+
+		// 	}
+
+
+		// }
+
 		if (!$scope.reportObj[report.activity]) {
 			$scope.reportObj[report.activity] = {
 				activity: report.activity,
@@ -23,6 +35,8 @@ app.controller('ReportSummaryController', function ($scope, reportService, helpe
 		}
 		
 	});
+
+	console.log("after", $scope.reportObj);
 
 	for(var key in $scope.reportObj){
 		var timeObj = helperService.calculateTime($scope.reportObj[key].millis);
