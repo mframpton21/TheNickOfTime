@@ -3,21 +3,15 @@ var app = angular.module('nickOfTime');
 app.controller('ReportSummaryController', function ($scope, reportService, helperService) {
 
 	////////////////////////////////////////////////////////////////
+
+	console.log("In ReportSummaryController");
+	//debugger;
+
   $scope.reportObj = {};
 
 	$scope.report.forEach(function (report) {
 
 		console.log("before", report);
-		// for (key in $scope.reportObj) {
-		// 	console.log("reportObj key", key);
-
-		// 	if ($scope.reportObj[key] === 'activity' && 
-		// 		key[$scope.reportObj] === report.activity) {
-
-		// 	}
-
-
-		// }
 
 		if (!$scope.reportObj[report.activity]) {
 			$scope.reportObj[report.activity] = {
@@ -44,5 +38,7 @@ app.controller('ReportSummaryController', function ($scope, reportService, helpe
 		$scope.reportObj[key].minutes = timeObj.minutes;
 		$scope.reportObj[key].seconds = timeObj.seconds;
 	}
+
+	////////////////////////////////////////////////////////////////
 
 });	

@@ -3,6 +3,12 @@ var app = angular.module('nickOfTime');
 app.controller('statsController', function($scope, $location, userService) {
 
 	////////////////////////////////////////////////////////////////
+	console.log("reportObj", $scope.reportObj);
+
+
+
+	////////////////////////////////////////////////////////////////
+	//iife function - immediately-invoked function expression
 	!function(){
 		var Donut3D={};
 		
@@ -135,20 +141,22 @@ app.controller('statsController', function($scope, $location, userService) {
 	{label:"Delux", color:"#990099"}
 	];
 
-	var svg = d3.select('#' + thingPassedIn).append("svg").attr("width",700).attr("height",300);
-
-
+	////////////////////////////////////////////////////////////////
+	var svg = d3.select('.stats')
+		.append("svg")
+		.attr("width",700)
+		.attr("height",300);
 
 
 
 	svg.append("g").attr("id","salesDonut");
 	svg.append("g").attr("id","quotesDonut");
 
-	//Donut3D.draw("salesDonut", randomData(), 150, 150, 130, 100, 30, 0.4);
+	Donut3D.draw("salesDonut", randomData(), 150, 150, 130, 100, 30, 0.4);
 	Donut3D.draw("quotesDonut", randomData(), 500, 150, 130, 100, 30, 0);
 		
 	$scope.changeData = function(){
-		//Donut3D.transition("salesDonut", randomData(), 130, 100, 30, 0.4);
+		Donut3D.transition("salesDonut", randomData(), 130, 100, 30, 0.4);
 		Donut3D.transition("quotesDonut", randomData(), 130, 100, 30, 0);
 	}
 
