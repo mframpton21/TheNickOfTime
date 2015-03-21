@@ -55,9 +55,6 @@ app.controller('trackController', function ($scope, trackRef, trackService) {
   ////////////////////////////////////////////////////////////////
   $scope.timeTracker = function(itemObj, index) {
 
-    //console.log("timerRunning: ", $scope.timerRunning);
-    //console.log("index: ", + index);
-
     switch ($scope.timerRunning) {
       case false:
         $scope.startTimer(itemObj);

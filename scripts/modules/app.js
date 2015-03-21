@@ -1,4 +1,4 @@
-var app = angular.module('nickOfTime', ['ngRoute', 'firebase', 'timer', 'App.filers']);
+var app = angular.module('nickOfTime', ['ngRoute', 'firebase', 'timer']);
 
 app.config(function($routeProvider){
 
@@ -38,12 +38,6 @@ app.config(function($routeProvider){
 
       templateUrl: 'scripts/templates/signup.html',
       controller: 'signupController'
-    })
-
-    .when('/stats',{
-
-      templateUrl: 'scripts/templates/stats.html',
-      controller: 'statsController'
     })
 
   	.when('/track', {

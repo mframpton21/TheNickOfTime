@@ -5,27 +5,27 @@
 <form class="form-signin"> 
 
   <div  class="form-group btn-group" data-toggle="buttons">
-      <label ng-click="detailed = true" class="btn btn-primary active">
+      <label ng-click="detailedSummary(true)" class="btn btn-primary active">
         <input type="radio" name="options" > Detailed
       </label>
-      <label ng-click="detailed = false" class="btn btn-primary">
+      <label ng-click="detailedSummary(false)" class="btn btn-primary">
         <input type="radio" name="options"> Summary
       </label>
   </div>
 
-  <div class="form-group" ng-if="detailed">
+  <div class="form-group">
       <label for="fromdate">From Date: </label>
-      <input ng-model="option.fromDate" required="required" class="form-control" type="date" placeholder="from date"/>
+      <input ng-model="option.fromDate" ng-change="stateChange()" required="required" class="form-control" type="date" placeholder="from date"/>
   </div>
 
-  <div class="form-group" ng-if="detailed">
+  <div class="form-group">
       <label for="todate">To Date: </label>
-      <input ng-model="option.toDate" required="required" type="date" class="form-control" placeholder="to date" /> 
+      <input ng-model="option.toDate" ng-change="stateChange()" required="required" type="date" class="form-control" placeholder="to date" /> 
   </div>
 
   <div class="form-group">
     <label for="filterBy">Filter By: </label>
-    <select class="form-control" ng-options="type.name for type in reportType" ng-model="type.value"></select>
+    <select class="form-control" ng-options="type.name for type in reportType" ng-model="type.value" ng-change="stateChange()"></select>
   </div>
 
 </form>
@@ -35,4 +35,7 @@
   </div>
   <div ng-if="!detailed">
     <summary></summary>
+  </div>
+  <div ng-if="!detailed">
+    <report-stats data="reportObject"></report-stats>
   </div>

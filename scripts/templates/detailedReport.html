@@ -9,7 +9,7 @@
     </thead>
 
     <tbody> 
-      <tr ng-repeat="item in report | filterByOptions:type.value:option:detailed">
+      <tr ng-repeat="item in reportObject">
         <td >{{item.activity}}</td>
         <td >{{item.date}}</td>
         <td >{{item.time}}</td>
