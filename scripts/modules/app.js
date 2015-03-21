@@ -22,7 +22,13 @@ app.config(function($routeProvider){
       
     })
 
-  	.when('/login',{
+    .when('/countDown',{
+
+      templateUrl: 'scripts/templates/countDown.html',
+      controller: 'countDownController'
+    })
+
+    .when('/login',{
 
     	templateUrl: 'scripts/templates/login.html',
     	controller: 'loginController'

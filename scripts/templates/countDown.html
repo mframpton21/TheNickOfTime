@@ -1,0 +1,22 @@
+<br>
+<h1>Count Down</h1> 
+
+<!-- <timer autostart="false" interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
+<p> HERE: {{endTime}} </p>
+<p> HERE: {{endDate}} </p>
+{{timeObj.time}}
+
+<div class="text-center countDown">
+  <timer autostart="false" end-time="timeObj.time">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+</div>
+
+<form class="form-signin"> 
+
+  <div class="form-group text-nowrap">
+      <label for="fromdate">Count Down To: </label>
+      <input ng-model="countDown.toDate" required="required"  type="date" placeholder="to date"/>
+      <button ng-model="style" type="button" class="btn btn-default" ng-click="countdownTimer()"><span class="{{countDown.style}}"></span></button>
+  </div>
+
+</form>
+

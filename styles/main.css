@@ -19,6 +19,10 @@ svg text.percent{
 	font-size:12px;
 }
 
+.countDown {
+	font-size: 20px;
+}
+
 .TrackActivity {
 	width: 95%;
 }
