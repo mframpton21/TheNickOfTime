@@ -10,11 +10,12 @@ app.controller('countDownController', function ($scope) {
   $scope.timerStart = false;
   $scope.countDown = {};
   $scope.countDown.style = nonTrackStyle;
-  $scope.countDown.toDate = new Date();
-
+  $scope.countDown.toDate = new Date("03/29/2015");
+  var x = new Date($scope.countDown.toDate).getTime();
   $scope.timeObj = {};
-  $scope.timeObj.time = new Date($scope.countDown.toDate).getTime();
+  $scope.timeObj.time = x;
 
+  //$scope.timeObj.time = 1451628000000;
   $scope.days = 0;
   $scope.hours = 0;
   $scope.minutes = 0;
