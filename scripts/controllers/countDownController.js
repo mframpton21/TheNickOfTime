@@ -10,29 +10,31 @@ app.controller('countDownController', function ($scope) {
   $scope.timerStart = false;
   $scope.countDown = {};
   $scope.countDown.style = nonTrackStyle;
-  $scope.countDown.toDate = new Date("03/29/2015");
+  $scope.countDown.toDate = new Date();
   var x = new Date($scope.countDown.toDate).getTime();
   $scope.timeObj = {};
   $scope.timeObj.time = x;
 
-  //$scope.timeObj.time = 1451628000000;
   $scope.days = 0;
   $scope.hours = 0;
   $scope.minutes = 0;
   $scope.seconds = 0;
 
-  
-
-  // console.log($scope.countDown.toDate);
-  // console.log($scope.countDown.toDate.getTime());
-
-
   ////////////////////////////////////////////////////////////////
   // stop timer envent to capture timer data
   $scope.$on('timer-stopped', function (event, data){
     $scope.elapseTime = data;
-    console.log('Timer Stopped - data = ', data);
+    //console.log('Timer Stopped - data = ', data);
   });  
+
+  ////////////////////////////////////////////////////////////////
+  $scope.clearTimer = function (){
+
+    $scope.$broadcast('timer-clear');
+    $scope.timerRunning = false;
+    $scope.timerStart = false;
+    $scope.countDown.style = nonTrackStyle;
+  };
 
 	////////////////////////////////////////////////////////////////
   $scope.startTimer = function (){
@@ -62,21 +64,30 @@ app.controller('countDownController', function ($scope) {
   };
 
   ////////////////////////////////////////////////////////////////
-  $scope.countdownTimer = function() {
+  $scope.countdownTimer = function(value) {
 
+    console.log($scope.countDown.toDate);
   	var countdownDate = new Date($scope.countDown.toDate).getTime();
   	console.log(countdownDate);
-  	//$scope.timeObj = {};
   	$scope.timeObj.time = countdownDate;
-  	$scope.endDate = new Date(countdownDate);
+    $scope.endDate = new Date(countdownDate);
+//debugger;
 
-  	if ($scope.timerRunning) {
-  		$scope.stopTimer();
-  	} else {
-  		$scope.startTimer();
-  	}
+    switch (value) {
+      case 'dateChange':
+        if ($scope.timerRunning) {
+          //$scope.clearTimer();
+          $scope.startTimer();
+        }
+        break;
+      case 'playPause':
+        if ($scope.timerRunning) {
+          $scope.stopTimer();
+        } else {
+          $scope.startTimer();
+        }
+        break;
+    }
   };
-
-  //$scope.startTimer();
 
 });
