@@ -99,4 +99,14 @@ app.controller('reportController', function ($scope, reportRef, reportService, h
 
   };
 
+  ////////////////////////////////////////////////////////////////
+  $scope.exportData = function() {
+
+    alasql('SELECT * INTO XLSX("Invoice100.xlsx",{sourcefilename:"Invoice100.xlsx", sheetid:"Billing Information",range:"A17",headers:false}) FROM ?',[$scope.reportObject], function(res) {
+      console.log(res);
+    });
+
+  };
+
+
 });	
