@@ -1,7 +1,10 @@
 var app = angular.module('nickOfTime');
 
 app.controller('reportController', function ($scope, reportRef, reportService, helperService) {
+
   $scope.detailed = !$scope.detailed
+  $scope.filename = "Invoice001.xlsx";
+
 	////////////////////////////////////////////////////////////////
 	$scope.report = reportRef.$asArray();
 
@@ -102,8 +105,11 @@ app.controller('reportController', function ($scope, reportRef, reportService, h
   ////////////////////////////////////////////////////////////////
   $scope.exportData = function() {
 
-    alasql('SELECT * INTO XLSX("Invoice100.xlsx",{sourcefilename:"Invoice100.xlsx", sheetid:"Billing Information",range:"A17",headers:false}) FROM ?',[$scope.reportObject], function(res) {
-      console.log(res);
+    // alasql('SELECT * INTO XLSX("Invoice100.xlsx",{sourcefilename:"Invoice100.xlsx", sheetid:"Billing Information",range:"A17",headers:false}) FROM ?',[$scope.reportObject], function(res) {
+    //   console.log(res);
+    // });
+
+    alasql('SELECT date, activity INTO XLSX("'+$scope.filename+'",{sourcefilename:"'+$scope.filename+'", headers:false, sheetid: "Billing Statement", range:"A17"}) FROM ?',[$scope.reportObject],function(){
     });
 
   };
